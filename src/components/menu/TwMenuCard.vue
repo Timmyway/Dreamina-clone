@@ -34,7 +34,7 @@ withDefaults(defineProps<{
     backdrop-filter: blur(10px); /* Blur effect */    
     border: 1px solid rgba(255, 255, 255, 0.3); /* Light border to enhance the glass look */
     text-align: center;
-    color: #fff;
+    color: hsl(0, 0%, 100%);
     position: relative;
     &::before {
         content: '';

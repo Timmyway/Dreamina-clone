@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { onMounted } from 'vue';
+import { useIntersectionObserver } from '../composables/useIntersectionObserver';
+import { useGalleryStore } from '../stores/galleryStore';
 import type { Image } from '../types/gallery.types';
 
 interface Props {
@@ -6,12 +9,27 @@ interface Props {
 }
 
 defineProps<Props>();
+
+const galleryStore = useGalleryStore();
+
+const { startObserving } = useIntersectionObserver(galleryStore.loadImage,
+    { threshold: 0.1 }
+);
+
+onMounted(() => {
+    const lazyImages = document.querySelectorAll('.lazy') as NodeListOf<HTMLElement>;
+    startObserving(lazyImages);
+});
 </script>
 
 <template>
     <div class="tw-gallery">
         <template v-for="im in images" :key="`image-${im.id}`">
-            <img class="tw-gallery__image" :src="im.url" :alt="im.alt" />
+            <img
+                class="tw-gallery__image lazy"
+                :data-src="im.url"                
+                :alt="im.alt"
+            />
         </template>
     </div>
 </template>
