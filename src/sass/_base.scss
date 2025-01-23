@@ -1,0 +1,25 @@
+.bg-primary {
+    background-color: $primaryColor;    
+}
+
+.bg-secondary {
+    background-color: $secondaryColor;
+}
+
+body {
+    font-family: "DM Sans", serif;
+}
+
+.p-tabpanels, .p-tablist-tab-list {
+    background: $primaryColor!important;
+    border-color: $primaryColor!important;
+}
+.p-tab {
+    font-size: 1.4rem!important;    
+}
+.p-tab-active {
+    border-color: white!important;
+    color: white!important;
+    font-weight: bold!important;
+    font-size: 1.4rem!important;
+}
